@@ -1,0 +1,36 @@
+<app-search></app-search>
+<app-tags></app-tags>
+<ul>
+  <li *ngFor="let room of rooms">
+    <a routerLink="/room/{{room.id}}">
+      <img src="{{room.imageUrl}}" alt="{{room.name}}"/>
+      <div class="content">
+        <div class="name">
+          {{room.name}}
+        </div>
+        <span class="favorite {{room.favorite?'': 'not'}}">
+          ❤
+        </span>
+        <ngb-rating [max]='5' [rate]="room.stars" [readonly]="true" >
+        </ngb-rating>
+        <div class="product-item-footer">
+          <div class="origins">
+            <span *ngFor="let origin of room.origins">
+              {{origin}}
+            </span>
+          </div>
+          <div class="arrive-time">
+            <span>🕒</span>
+            {{room.arriveTime}}
+          </div>
+          <div class="price">
+            <span>
+              {{room.price | currency}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </li>
+</ul>
