@@ -10,22 +10,26 @@ export class RoomService {
 
   constructor() { }
 
-  getALL():Room[]{
+  getALL(): Room[] {
     return sample_rooms;
 
   }
-  getAllRoomsBySearchTerm(searchTerm:string){
+  getAllRoomsBySearchTerm(searchTerm: string) {
     return this.getALL().filter(room => room.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
 
   }
 
-  getAllTags():Tag[]{
+  getAllTags(): Tag[] {
     return sample_tags;
   }
-  getAllRoomsByTag(tag:string):Room[]{
-    return tag ==="All"?
-    this.getALL():
-    this.getALL().filter(room => room.tags?.includes(tag));
+  getAllRoomsByTag(tag: string): Room[] {
+    return tag === "All" ?
+      this.getALL() :
+      this.getALL().filter(room => room.tags?.includes(tag));
 
   }
+  getRoomById(roomId: string): Room {
+    return this.getALL().find(room => room.id == roomId) ?? new Room();
+  }
+
 }

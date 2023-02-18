@@ -1,0 +1,34 @@
+<div class="container">
+  <img src="{{room.imageUrl}}" alt="{{room.name}}" />
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{room.name}}
+      </span>
+      <span class="favorite {{room.favorite? '': 'not'}}"> ❤ </span>
+    </div>
+    <div class="rating">
+      <ngb-rating [max]='5' [rate]="room.stars" [readonly]="true">
+      </ngb-rating>
+    </div>
+    <div class="origins">
+      <span *ngFor="let origin of room.origins">
+        {{origin}}
+      </span>
+    </div>
+    <div class="tags">
+      <a *ngFor="let tag of room.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+    <div class="arrive-time">
+      need Time to arrive <strong>{{room.arriveTime}}</strong>
+    </div>
+    <div class="price">
+      <span>
+        {{room.price | currency}}
+      </span>
+    </div>
+    <button (click)="addToCart()"><h5>Add To Cart</h5></button>
+  </div>
+</div>

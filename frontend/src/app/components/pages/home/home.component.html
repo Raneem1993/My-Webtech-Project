@@ -3,16 +3,18 @@
 <ul>
   <li *ngFor="let room of rooms">
     <a routerLink="/room/{{room.id}}">
-      <img src="{{room.imageUrl}}" alt="{{room.name}}"/>
+      <img src="{{room.imageUrl}}" alt="{{room.name}}" />
       <div class="content">
         <div class="name">
           {{room.name}}
         </div>
-        <span class="favorite {{room.favorite?'': 'not'}}">
+        <span class="favorite {{room.favorite? '': 'not'}}">
           ❤
         </span>
-        <ngb-rating [max]='5' [rate]="room.stars" [readonly]="true" >
-        </ngb-rating>
+        <div class="rating">
+          <ngb-rating [max]='5' [rate]="room.stars" [readonly]="true">
+          </ngb-rating>
+        </div>
         <div class="product-item-footer">
           <div class="origins">
             <span *ngFor="let origin of room.origins">
