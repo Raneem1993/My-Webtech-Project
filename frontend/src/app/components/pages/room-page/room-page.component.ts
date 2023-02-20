@@ -15,7 +15,9 @@ export class RoomPageComponent {
     private cartService : CartService, private router: Router){
     activatedRoute.params.subscribe((params)=>{
       if(params.id)
-      this.room = roomService.getRoomById(params.id);
+     roomService.getRoomById(params.id).subscribe(serverRoom =>{
+       this.room = serverRoom;
+     });
     })
   }
 

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { RoomService } from 'src/app/services/room.service';
 import { Room } from 'src/app/shared/models/room';
-import { __param } from 'tslib';
+
 
 @Component({
   selector: 'app-home',
@@ -13,13 +14,18 @@ export class HomeComponent {
 
   rooms:Room[] = [];
   constructor(private roomService:RoomService, activatedRoute:ActivatedRoute) {
+    let roomsObservable : Observable<Room[]>;
     activatedRoute.params.subscribe((params)=>{
       if(params.searchTerm)
-      this.rooms = this.roomService.getAllRoomsBySearchTerm(params.searchTerm);
+      roomsObservable = this.roomService.getAllRoomsBySearchTerm(params.searchTerm);
        else if(params.tag)
-       this.rooms = this.roomService.getAllRoomsByTag(params.tag);
+       roomsObservable = this.roomService.getAllRoomsByTag(params.tag);
        else
-       this.rooms = roomService.getALL();
+       roomsObservable = roomService.getALL();
+
+       roomsObservable.subscribe((serverRooms)=>{
+         this.rooms = serverRooms;
+       })
 
     })
 

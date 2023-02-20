@@ -1,7 +1,6 @@
-import {Room} from './app/shared/models/room';
-import { Tag } from './app/shared/models/Tag';
 
-export const sample_rooms: Room[] =
+
+export const sample_rooms: any[] =
 [
   {
     id:'1',
@@ -67,7 +66,7 @@ export const sample_rooms: Room[] =
 
 ]
 
- export const sample_tags: Tag[]=
+ export const sample_tags: any[]=
 [
 
   {name: 'All' , count: 5},

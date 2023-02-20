@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { sample_rooms, sample_tags } from 'src/data';
+import { ROOMS_BY_SEARCH_URL, ROOMS_BY_TAG_URL, ROOMS_TAGS_URL, ROOMS_URL, ROOM_BY_ID_URL } from '../shared/constants/urls';
 import { Room } from '../shared/models/room';
 import { Tag } from '../shared/models/Tag';
 
@@ -8,28 +11,29 @@ import { Tag } from '../shared/models/Tag';
 })
 export class RoomService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getALL(): Room[] {
-    return sample_rooms;
-
-  }
-  getAllRoomsBySearchTerm(searchTerm: string) {
-    return this.getALL().filter(room => room.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+  getALL(): Observable<Room[]> {
+    return this.http.get<Room[]>(ROOMS_URL);
 
   }
 
-  getAllTags(): Tag[] {
-    return sample_tags;
+
+  getAllRoomsBySearchTerm(searchTerm: string): any {
+    return this.http.get<Room[]>(ROOMS_BY_SEARCH_URL + searchTerm);
+
   }
-  getAllRoomsByTag(tag: string): Room[] {
+
+  getAllTags(): Observable<Tag[]> {
+    return this.http.get<Tag[]>(ROOMS_TAGS_URL);
+  }
+  getAllRoomsByTag(tag: string): Observable<Room[]> {
     return tag === "All" ?
       this.getALL() :
-      this.getALL().filter(room => room.tags?.includes(tag));
-
+      this.http.get<Room[]>(ROOMS_BY_TAG_URL  + tag);
   }
-  getRoomById(roomId: string): Room {
-    return this.getALL().find(room => room.id == roomId) ?? new Room();
+  getRoomById(roomId: string): Observable<Room> {
+    return this.http.get<Room>(ROOM_BY_ID_URL + roomId);
   }
 
 }

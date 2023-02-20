@@ -10,7 +10,9 @@ import { Tag } from 'src/app/shared/models/Tag';
 export class TagsComponent {
   tags?:Tag[];
   constructor(roomService:RoomService){
-    this.tags = roomService.getAllTags();
+  roomService.getAllTags().subscribe(serverTags=>{
+    this.tags = serverTags;
+  });
   }
 
 }
