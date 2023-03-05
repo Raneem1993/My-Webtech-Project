@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 
+
 const schema = new mongoose.Schema(
 {
     name: {type: String, required: true},
@@ -8,6 +9,7 @@ const schema = new mongoose.Schema(
     password: {type: String, required: true},
     address: {type: String, required: true},
     isAdmin: {type: Boolean, required: true},
+    
 }, {
     timestamps: true,
     toJSON:{

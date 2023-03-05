@@ -6,6 +6,7 @@ const express = require("express");
 const cors = require("cors");
 const roomRouter = require('./routers/room.router');
 const userRouter = require('./routers/user.router');
+const orderRouter = require('./routers/order.router');
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
@@ -16,6 +17,7 @@ mongoose.set('strictQuery', false);
  const app = express();
  app.use(express.json());
 
+
  app.use(cors({
      credentials:true,
      origin:["http://localhost:4200"]
@@ -23,6 +25,9 @@ mongoose.set('strictQuery', false);
 
  app.use("/api/rooms", roomRouter);
  app.use("/api/users", userRouter);
+ app.use("/api/orders", orderRouter);
+ 
+ 
 
  
 
