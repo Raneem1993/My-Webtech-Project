@@ -54,14 +54,98 @@ export const sample_rooms: Room[] =
   },
 {
   id:'5',
+  name:'Wood-Chair',
+  price:170,
+  favorite: false,
+  origins:['Italy','France'],
+  stars: 3.0,
+  imageUrl:'assets/Chair-1.jpg',
+  tags: ['Sessel','chair','living-room'],
+  arriveTime:'two Weeks',
+
+},
+{
+  id:'6',
+  name:'Chair',
+  price:150,
+  favorite: false,
+  origins:['Italy','France'],
+  stars: 3.0,
+  imageUrl:'assets/Chair.jpg',
+  tags: ['Sessel','chair','living-room'],
+  arriveTime:'two Weeks',
+
+},
+{
+  id:'7',
   name:'Sofa-rosa',
   price:250,
   favorite: false,
   origins:['Italy','France'],
   stars: 3.0,
   imageUrl:'assets/room-4.jpg',
-  tags: ['Sofa','rosa-sofa','living-room'],
+  tags: ['Sofa','living-room'],
   arriveTime:'One Week',
+
+},
+{
+  id:'8',
+  name:'Commode',
+  price:550,
+  favorite: false,
+  origins:['Spain','France'],
+  stars: 3.0,
+  imageUrl:'assets/Wood commode-2.jpg',
+  tags: ['Commode','Wood','modern'],
+  arriveTime:'five Weeks',
+
+},
+{
+  id:'9',
+  name:'Commode',
+  price:450,
+  favorite: false,
+  origins:['Spain','France'],
+  stars: 2.0,
+  imageUrl:'assets/Wood commode.jpg',
+  tags: ['Commode','Wood','living-room'],
+  arriveTime:'four Weeks',
+
+},
+{
+  id:'10',
+  name:'Sofa-green',
+  price:400,
+  favorite: false,
+  origins:['India'],
+  stars: 3.0,
+  imageUrl:'assets/Green Sofa.jpg',
+  tags: ['Sofa','living-room'],
+  arriveTime:'three Weeks',
+
+},
+{
+  id:'11',
+  name:'modern Commode',
+  price:420,
+  favorite: false,
+  origins:['Spain'],
+  stars: 2.0,
+  imageUrl:'assets/Commode-3.jpg',
+  tags: ['Commode','Wood','modern'],
+  arriveTime:'two Weeks',
+
+},
+{
+  id:'12',
+  name:'Commode',
+  price:280,
+  favorite: false,
+  origins:['Germany'],
+  stars: 3.0,
+  imageUrl:'assets/Commode-4.jpg',
+  tags: ['Commode','Wood','living-room'],
+  arriveTime:'three Weeks',
 
 },
 
@@ -81,12 +165,5 @@ export const sample_rooms: Room[] =
 ]
 
 
-export const sample_users: any[] =
-[
-  {name:'Raneem', email:'raneem.r7@hotmail.com',password:'Raneem123',address:'Deutschland,Berlin', isAdmin:true},
-  {name:'Jalal', email:'jalal.r176218@hotmail.com',password:'12345',address:'Deutschland,Berlin', isAdmin:false},
-  {name:'Rahaf', email:'rahaf.1991@hotmail.com',password:'Ra12@',address:'Deutschland,Berlin', isAdmin:false},
-
-]
 
 

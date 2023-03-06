@@ -16,10 +16,12 @@
 .summary > div{
   display: flex;
   margin-top: 0.7rem;
+
 }
 
 .summary span {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
+  color: blue;
 }
 
 .summary h3{

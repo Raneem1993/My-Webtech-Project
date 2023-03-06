@@ -1,5 +1,6 @@
 const Router =require('express');
 const router = Router();
+const mongoose = require('mongoose');
 const User = require('../models/user.model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -56,13 +57,13 @@ router.post("/login",
 
   function generateTokenReponse(user,_User){
   const token = jwt.sign({
-  id:user.id ,email:user.email, isAdmin: user.isAdmin
+     email:user.email, isAdmin: user.isAdmin
   }, process.env.JWT_SECRET, {
     expiresIn: "30d"
   });
 
   return {
-    id:user.id,
+    id: user.id,
     email: user.email,
     name: user.name,
     address: user.address,

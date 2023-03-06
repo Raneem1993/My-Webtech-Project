@@ -8,6 +8,7 @@ import { IUserRegister } from '../shared/interfaces/IUserRegister';
 import { User } from '../shared/models/User';
 
 const USER_KEY = 'User';
+const params = 'user';
 @Injectable({
   providedIn: 'root'
 })

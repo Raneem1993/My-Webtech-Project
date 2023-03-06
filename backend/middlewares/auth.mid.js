@@ -1,13 +1,12 @@
-const verify = require('jsonwebtoken');
 
-module.exports = function(req, res, next){
+function verify (req , res , next ){
+
     const token = req.headers.access_token;
-    if(!token) 
-    return res.status(401).send();
+    if(!token) return res.status(401).send();
 
     try {
         const decodedUser = verify(token, process.env.JWT_SECRET);
-        req.params = decodedUser;
+        req.user = decodedUser;
 
     } catch (error) {
         res.status(401).send();
@@ -15,4 +14,3 @@ module.exports = function(req, res, next){
 
     return next();
 }
-

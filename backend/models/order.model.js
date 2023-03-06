@@ -44,8 +44,7 @@ const OrderItemSchema = new mongoose.Schema({
 
 
 const orderSchema = new mongoose.Schema({
-
-    id: '',
+    
     name: { type: String },
     address: { type: String },
     addressLatLng: { type: LatLngSchema, required: true },

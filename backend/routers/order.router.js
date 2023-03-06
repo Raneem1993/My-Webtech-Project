@@ -1,46 +1,41 @@
 const Router = require('express');
 const router = Router();
-const mongoose = require('mongoose');
 const Order = require('../models/order.model');
 const OrderStatus = require('../constats/order_status');
-const user = require('../models/user.model');
+
+
 
 
 router.post('/create',
 async (req, res) => {
     const requestOrder = req.body;
-    const id = mongoose.Types.ObjectId(req.params.id);
-
     if(requestOrder.items.length <= 0){
-        res.status(400).send('Cart Is Empty!');
-        return;
+        return res.status(400).send('Cart Is Empty!');
+        
     }
 
     await Order.deleteOne({
-        user: mongoose.Types.ObjectId(id),
+        user: req.params.id,
         status: OrderStatus.NEW
     });
-
-    const newOrder = new Order({...requestOrder,user:  mongoose.Types.ObjectId(id),status: OrderStatus.NEW});
+    const newOrder = new Order({...requestOrder,user: req.params.id});
     await newOrder.save();
     res.send(newOrder);
 })
 
 
-router.get('/newOrderForCurrentUser',  async (req,res ) => {
-    const id = mongoose.Types.ObjectId(req.params.id);
-    const order= await Order.findOne({ user:mongoose.Types.ObjectId(req.params.id), status: OrderStatus.NEW });
-    
+router.get('/newOrderForCurrentUser',  async (req = any,res ) => {
+    const order= await getNewOrderForCurrentUser(req);
     if(order) res.send(order);
-    else res.status(400).send();
+    else res.status(401).send();
 })
-
 
 router.post('/pay',  async (req, res) => {
     const {paymentId} = req.body;
     const order = await getNewOrderForCurrentUser(req);
     if(!order){
         res.status(400).send('Order Not Found!');
+        return;
        
     }
 
@@ -50,6 +45,16 @@ router.post('/pay',  async (req, res) => {
 
     res.send(order._id);
 })
+
+router.get('/track/:id',  async (req, res) => {
+    const order = await Order.findById(req.params.id);
+    res.send(order);
+})
+
+
+async function getNewOrderForCurrentUser(req ) {
+    return await Order.findOne({ user:req.params.id });
+}
 
 
 
@@ -69,16 +74,5 @@ router.post('/pay',  async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router;
+

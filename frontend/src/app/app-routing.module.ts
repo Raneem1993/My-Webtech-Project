@@ -5,6 +5,7 @@ import { CartPageComponent } from './components/pages/cart-page/cart-page.compon
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { LoginComponent } from './components/pages/login/login.component';
+import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { RoomPageComponent } from './components/pages/room-page/room-page.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'register', component: RegisterPageComponent},
   {path:'checkout', component: CheckoutPageComponent, canActivate:[AuthGuard]},
   {path:'payment', component: PaymentPageComponent, canActivate:[AuthGuard]},
+  {path:'track/:orderId', component: OrderTrackPageComponent, canActivate:[AuthGuard]},
 
 
 ];

@@ -14,6 +14,7 @@ mongoose.set('strictQuery', false);
 
 
 
+
  const app = express();
  app.use(express.json());
 
@@ -23,9 +24,13 @@ mongoose.set('strictQuery', false);
      origin:["http://localhost:4200"]
  }));
 
+
+ 
+
  app.use("/api/rooms", roomRouter);
  app.use("/api/users", userRouter);
  app.use("/api/orders", orderRouter);
+
  
  
 
