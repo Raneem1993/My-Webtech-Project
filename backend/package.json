@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "npm install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^18.14.6",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

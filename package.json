@@ -1,0 +1,25 @@
+{
+  "name": "my-webtech-project",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=18 <19"
+},
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd backend/built && nodemon server.js",
+    "prebuild": "cd backend && npm run build",
+    "build": "cd frontend && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raneem1993/My-Webtech-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raneem1993/My-Webtech-Project/issues"
+  },
+  "homepage": "https://github.com/Raneem1993/My-Webtech-Project#readme"
+}
