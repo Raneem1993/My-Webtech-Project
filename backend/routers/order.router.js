@@ -1,7 +1,6 @@
 const Router = require('express');
 const router = Router();
 const Order = require('../models/order.model');
-const OrderStatus = require('../constats/order_status');
 
 
 
@@ -16,7 +15,7 @@ async (req, res) => {
 
     await Order.deleteOne({
         user: req.params.id,
-        status: OrderStatus.NEW
+        
     });
     const newOrder = new Order({...requestOrder,user: req.params.id});
     await newOrder.save();

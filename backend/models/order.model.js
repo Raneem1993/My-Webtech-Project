@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const OrderStatus = require('../constats/order_status');
+
 
 
 
@@ -51,7 +51,6 @@ const orderSchema = new mongoose.Schema({
     paymentId: { type: String },
     totalPrice: { type: Number, required: true },
     items: { type: [OrderItemSchema], required: true },
-    status:{type:String , default:OrderStatus.NEW},
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 
 }, {
