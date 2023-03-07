@@ -5,7 +5,6 @@
       <div><strong>Date</strong> <span> {{order.createdAt | date:'medium'}}</span></div>
       <div><strong>Name</strong> <span>{{order.name}}</span></div>
       <div><strong>Address</strong> <span> {{order.address}}</span></div>
-      <div><strong>Status</strong> <span> {{order.status}}</span></div>
       <div *ngIf="order.paymentId">
         <strong>Payment ID</strong> <span>{{order.paymentId}}</span>
       </div>
